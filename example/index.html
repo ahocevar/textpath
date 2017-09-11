@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="../dist/textpath.js"></script>
+</head>
+<body>
+  <canvas id="myCanvas" width="320" height="50"></canvas>
+  <script>
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+    ctx.font = '40px serif';
+    ctx.textBaseline = 'baseline';
+    ctx.textAlign = 'center';
+    ctx.strokeWidth = 1;
+    ctx.strokeStyle = 'red';
+
+    var path = [
+      [20, 33], [40, 31], [60, 30], [80, 31], [100, 33],
+      [120, 37], [140, 39], [160, 40], [180, 39], [200, 37],
+      [220, 33], [240, 31], [260, 30], [280, 31], [300, 33]
+    ];
+
+    ctx.moveTo.apply(ctx, path[0]);
+    for (var i = 1, ii = path.length; i < ii; ++i) {
+      ctx.lineTo.apply(ctx, path[i]);
+    }
+    ctx.stroke();
+
+    function measureText(text) {
+      return ctx.measureText(text).width;
+    }
+
+    function draw(letter, x, y, angle) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      ctx.fillText(letter, 0, 0);
+      ctx.restore();
+    }
+
+    textPath('My text path :-)', path, measureText, draw);
+  </script>
+</body>
+</html>
