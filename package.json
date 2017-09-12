@@ -1,6 +1,6 @@
 {
   "name": "textpath",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Renderer agnostic utility for drawing text along a path",
   "main": "index.js",
   "browser": "dist/textpath.js",
